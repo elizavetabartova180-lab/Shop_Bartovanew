@@ -9,7 +9,7 @@ namespace Shop_Bartova.Classes
     public class Children : Shop
     {
         public int Age { get; set; }
-        public Children(string name, int price, string size, int age) : base(name, price)
+        public Children(string name, int price, int age) : base(name, price)
         {
             this.Age = age;
         }
