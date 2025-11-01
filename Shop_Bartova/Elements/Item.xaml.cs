@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.ComponentModel.Design.Serialization;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Shop_Bartova.Classes;
 
 namespace Shop_Bartova.Elements
 {
@@ -20,9 +9,22 @@ namespace Shop_Bartova.Elements
     /// </summary>
     public partial class Item : UserControl
     {
-        public Item()
+        public Item(object item)
         {
             InitializeComponent();
+            Shop ShopData = item as Shop;
+            td_Name.Content = ShopData.Name;
+            td_Price.Content = "Цена:" + ShopData.Price;
+            if (item is Children)
+            {
+                Children ChildrenData = item as Children;
+                td_Characteristic.Content = "Возраст:" + ChildrenData.Age;
+            }
+            if (item is Sport) { 
+                Sport SportData = item as Sport;
+                td_Characteristic.Content = "Размер:" + SportData.Size;
+
+            }
         }
     }
 }
